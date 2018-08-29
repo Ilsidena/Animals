@@ -11,23 +11,17 @@ import java.util.Optional;
 @RestController
 class Controller {
     @RequestMapping("/feed")
-    public Rest  feed (@RequestParam (value = "name", defaultValue = "unknown") String name,
+    public Animal  feed (@RequestParam (value = "name", defaultValue = "unknown") String name,
                        @RequestParam (value = "food", defaultValue = "unknown") String food,
                        @RequestParam (value = "count", defaultValue = "0") int count) {
-        Animal animal = zoo.findById(name);
+       zoo.save(new Animal(name, food, count));
 
-       if (animal == null)
-            animal = new Animal(name);
-
-        animal.feed(food, count);
-        zoo.save(animal);
-
-        return new Rest (name, new Feed (food, count))  ;
+        return new Animal(name, food, count)  ;
     }
 
     @Autowired
-    public Controller () {
-        zoo = new Zoo ();
+    public Controller (Zoo zoo) {
+        this.zoo = zoo;
     }
 
     private Zoo zoo;

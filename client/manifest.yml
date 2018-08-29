@@ -1,0 +1,6 @@
+applications:
+- name: client
+  instances: 1
+  services:
+  - mysql-instance-example
+path: target/client-0.0.1-SNAPSHOT.jar

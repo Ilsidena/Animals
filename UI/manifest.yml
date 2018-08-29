@@ -1,0 +1,4 @@
+applications:
+- name: ui
+  instances: 1
+path: target/UI-0.0.1-SNAPSHOT.jar

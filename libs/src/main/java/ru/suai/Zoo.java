@@ -1,14 +1,15 @@
 package ru.suai;
 
-/*
+
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface Zoo extends CrudRepository <Animal, String> {
+public interface Zoo extends JpaRepository<Animal, String> {
 }
-*/
 
+/*
 import java.util.LinkedList;
 import java.util.ListIterator;
 
@@ -40,3 +41,4 @@ public class Zoo {
         return zoo.add(animal);
     }
 }
+*/

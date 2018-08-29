@@ -1,5 +1,6 @@
 package ru.suai;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,25 +11,27 @@ import java.util.List;
 
 @Entity
 @Data
+@AllArgsConstructor
 public class Animal {
     @Id
     String name;
-
-    @OneToMany(targetEntity=Animal.class, mappedBy="feeds", fetch=FetchType.EAGER)
-    List<Feed> feeds;
+    String food;
+    int count;
 
     public Animal () {
         this.name = "unknown";
-        this.feeds = new ArrayList <> ();
+        this.food = "unknown";
+        this.count = 0;
     }
 
     public Animal (String name) {
         this.name = name;
-        this.feeds = new ArrayList <> ();
+        this.food = "unknown";
+        this.count = 0;
     }
 
-    public boolean feed (String food, int count) {
-        Feed feed = new Feed (food, count);
-        return this.feeds.add (feed);
+    public void feed (String food, int count) {
+        this.count = count;
+        this.food = food;
     }
 }
